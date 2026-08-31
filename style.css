@@ -80,6 +80,16 @@ button { cursor: pointer; }
 .hero-content {
   position: relative;
   z-index: 2;
+  min-height: 420px;
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
 }
 .hero-description {
   max-width: 620px;
@@ -114,10 +124,10 @@ button { cursor: pointer; }
 }
 
 .hero h1 {
-  max-width: none;
+  max-width: 760px;
   margin: 0;
   white-space: nowrap;
-  font-size: clamp(30px, 4vw, 52px);
+  font-size: clamp(30px, 4vw, 48px);
   line-height: 1.05;
 }
 
