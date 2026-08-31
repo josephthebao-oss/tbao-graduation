@@ -394,8 +394,33 @@ textarea {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
+  max-height: 600px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 8px;
+  align-content: start;
+}
+.wish-card {
+  min-width: 0;
+  height: auto;
+}
+.wish-list::-webkit-scrollbar {
+  width: 6px;
 }
 
+.wish-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+}
+
+.wish-list::-webkit-scrollbar-thumb {
+  background: #60818f;
+  border-radius: 10px;
+}
+
+.wish-list::-webkit-scrollbar-thumb:hover {
+  background: #f0c978;
+}
 .wish-card {
   position: relative;
   overflow: hidden;
@@ -493,6 +518,9 @@ textarea {
   line-height: 1.6;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
+  word-break: break-word;
+  height: auto;
+  overflow: visible;
 }
 
 .reveal { animation: rise .65s both; }
