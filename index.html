@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bảng lưu niệm tốt nghiệp của Tbao">
+  <title>Mừng Tbao đã tốt nghiệp</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="hero arch-frame">
+        <img class="hero-photo" src="images/hero.png" alt="Minh họa nét vẽ một dược sĩ trong không gian phòng khám">
+        <div class="hero-wash"></div>
+        <div class="hero-content">
+          <p class="hero-kicker">Mùa thu 2026</p>
+          <h1>Mừng Tbao đã tốt nghiệp</h1>
+          <p class="hero-description">
+            Cảm ơn bạn đã đến và cùng lưu lại những lời chúc cho một cột mốc đặc biệt.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <main class="content-grid">
+      <section class="form-panel paper-panel reveal" aria-labelledby="form-title">
+        <div class="section-heading">
+          <div class="icon-circle">✎</div>
+          <h2 id="form-title">Gửi lời chúc của bạn</h2>
+          <p>Một vài dòng chân thành sẽ trở thành kỷ niệm đẹp cho tân cử nhân.</p>
+        </div>
+
+        <form id="wish-form" novalidate>
+          <fieldset>
+            <legend>Chọn biểu tượng đại diện</legend>
+            <div class="avatar-row" aria-label="Chọn biểu tượng đại diện">
+              <button type="button" class="avatar-choice selected" data-avatar="🎓" aria-label="Mũ tốt nghiệp" aria-pressed="true">🎓</button>
+              <button type="button" class="avatar-choice" data-avatar="🌟" aria-label="Ngôi sao" aria-pressed="false">🌟</button>
+              <button type="button" class="avatar-choice" data-avatar="🌻" aria-label="Hoa hướng dương" aria-pressed="false">🌻</button>
+              <button type="button" class="avatar-choice" data-avatar="💐" aria-label="Bó hoa" aria-pressed="false">💐</button>
+              <button type="button" class="avatar-choice" data-avatar="✨" aria-label="Lấp lánh" aria-pressed="false">✨</button>
+            </div>
+          </fieldset>
+
+          <div class="field">
+            <label for="sender-name">Tên của bạn</label>
+            <input id="sender-name" type="text" maxlength="60" autocomplete="name" required placeholder="Nhập tên của bạn">
+          </div>
+
+          <div class="field">
+            <label for="wish-message">Lời chúc</label>
+            <textarea id="wish-message" maxlength="500" required placeholder="Viết lời chúc của bạn ở đây..."></textarea>
+          </div>
+
+          <button id="submit-wish" class="submit-button" type="submit">
+            <span>➤</span> Gửi lời chúc
+          </button>
+          <p id="form-status" class="form-status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="wall-panel reveal reveal-delay" aria-labelledby="wall-title">
+        <div class="wall-heading">
+          <div>
+            <p class="wall-kicker">Bảng lưu niệm</p>
+            <h2 id="wall-title">Những lời chúc đang đến</h2>
+            <p>Mỗi lời nhắn là một đóa hoa cho hành trình mới.</p>
+          </div>
+          <div class="wall-icon">🎓</div>
+        </div>
+
+        <div id="empty-state" class="empty-state">
+          <div class="empty-icon">♡</div>
+          <h3>Hãy là người đầu tiên gửi lời chúc</h3>
+          <p>Lời nhắn của bạn sẽ xuất hiện tại đây và cùng tạo nên một bảng lưu niệm thật đặc biệt.</p>
+        </div>
+
+        <div id="wish-list" class="wish-list" aria-live="polite"></div>
+      </section>
+    </main>
+  </div>
+
+  <template id="wish-template">
+    <article class="wish-card">
+      <div class="tape"></div>
+      <div class="wish-meta">
+        <div class="wish-avatar"></div>
+        <div class="wish-author">
+          <h3 class="wish-sender"></h3>
+          <p class="wish-date"></p>
+        </div>
+      </div>
+      <p class="wish-message"></p>
+    </article>
+  </template>
+
+  <!-- Optional shared database. See config.js and README.md. -->
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
