@@ -11,6 +11,6 @@
 */
 
 window.SITE_CONFIG = {
-  supabaseUrl: "",
-  supabaseAnonKey: ""
+  supabaseUrl: "https://tqdqihwedqceluvedvsl.supabase.co",
+  supabaseAnonKey: "sb_publishable_MFY_pqil0MwPuzVy5fBnmg_CHG7f0yK"
 };
