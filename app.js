@@ -63,28 +63,35 @@
     localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
   }
 
-  function renderWishes(records) {
-    currentRecords = records
-      .map(sanitizeRecord)
-      .sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+ function renderWishes(records) {
+  currentRecords = records
+    .map(sanitizeRecord)
+    .sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
 
-    list.innerHTML = "";
+  list.innerHTML = "";
 
-    currentRecords.forEach(record => {
-      const fragment = template.content.cloneNode(true);
-      const card = fragment.querySelector(".wish-card");
-      card.dataset.recordId = record.id;
+  currentRecords.forEach(record => {
+    const fragment = template.content.cloneNode(true);
+    const card = fragment.querySelector(".wish-card");
 
-      card.querySelector(".wish-avatar").textContent = record.avatar_icon;
-      card.querySelector(".wish-sender").textContent = record.sender_name || "Người gửi ẩn danh";
-      card.querySelector(".wish-message").textContent = record.message;
-      card.querySelector(".wish-date").textContent = formatDate(record.created_at);
+    card.dataset.recordId = record.id;
 
-      list.appendChild(fragment);
-    });
+    card.querySelector(".wish-avatar").textContent = record.avatar_icon;
+    card.querySelector(".wish-sender").textContent =
+      record.sender_name || "Người gửi ẩn danh";
+    card.querySelector(".wish-message").textContent = record.message;
+    card.querySelector(".wish-date").textContent =
+      formatDate(record.created_at);
 
-    emptyState.classList.toggle("hidden", currentRecords.length > 0);
-  }
+    list.appendChild(fragment);
+  });
+
+  emptyState.classList.toggle("hidden", currentRecords.length > 0);
+
+  requestAnimationFrame(() => {
+    arrangeWishCards();
+  });
+}
 
   async function loadSupabaseClient() {
     if (!hasSupabase) return null;
@@ -223,6 +230,49 @@
         .subscribe();
     }
   }
+  function arrangeWishCards() {
+    const cards = [...list.querySelectorAll(".wish-card")];
 
+    if (!cards.length) return;
+
+    const isMobile = window.innerWidth <= 640;
+
+if (isMobile) {
+  list.style.height = "auto";
+
+  cards.forEach(card => {
+    card.style.position = "relative";
+    card.style.left = "";
+    card.style.top = "";
+    card.style.width = "100%";
+  });
+
+  return;
+}
+
+    const columns = 2;
+    const gap = 16;
+    const listWidth = list.clientWidth;
+    const columnWidth = (listWidth - gap) / columns;
+    const columnHeights = [0, 0];
+
+    cards.forEach(card => {
+      card.style.position = "absolute";
+      card.style.width = `${columnWidth}px`;
+
+      const column = columnHeights[0] <= columnHeights[1] ? 0 : 1;
+
+      card.style.left = `${column * (columnWidth + gap)}px`;
+      card.style.top = `${columnHeights[column]}px`;
+
+      columnHeights[column] += card.offsetHeight + gap;
+    });
+
+    list.style.height = `${Math.max(...columnHeights)}px`;
+  }
+
+  window.addEventListener("resize", arrangeWishCards);
+
+  initialize();
   initialize();
 })();
