@@ -129,6 +129,7 @@ button { cursor: pointer; }
   white-space: nowrap;
   font-size: clamp(30px, 4vw, 48px);
   line-height: 1.05;
+  color: #fffaf0;
 }
 
 @media (max-width: 900px) {
