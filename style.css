@@ -391,8 +391,7 @@ textarea {
 }
 
 .wish-list {
-  column-count: 2;
-  column-gap: 16px;
+  position: relative;
   max-height: 600px;
   overflow-y: auto;
   overflow-x: hidden;
@@ -426,6 +425,8 @@ textarea {
 .wish-card {
   position: relative;
   overflow: hidden;
+    width: 100%;
+  min-height: 0;
   padding: 22px 20px;
   border: 2px solid rgba(214,155,45,.32);
   border-radius: 16px;
