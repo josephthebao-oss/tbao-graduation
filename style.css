@@ -124,18 +124,17 @@ button { cursor: pointer; }
   }
 }
 
-..hero-description {
+.hero-description {
   max-width: 620px;
-  margin: 35px 0 0;
+  margin: 64px 0 0;
   color: #fef4dc;
   font-size: 15px;
   line-height: 1.7;
   text-align: justify;
-  text-justify: inter-word;
 }
 
 .hero-description p {
-  margin: 0 0 12px;
+  margin: 0 0 14px;
 }
 
 .hero-description p:last-child {
