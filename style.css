@@ -186,7 +186,7 @@ button { cursor: pointer; }
   line-height: 1.2;
 }
 .wall-panel h2 {
-  font-size: 18px;
+  font-size: 18px !important;
 }
 .section-heading p,
 .wall-heading > div > p:last-child {
