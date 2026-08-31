@@ -129,12 +129,22 @@ button { cursor: pointer; }
   }
 }
 
-.hero-description {
-  max-width: 540px;
-  margin: 18px 0 0;
+..hero-description {
+  max-width: 620px;
+  margin: 22px 0 0;
   color: #fef4dc;
-  font-size: 18px;
-  line-height: 1.6;
+  font-size: 15px;
+  line-height: 1.7;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.hero-description p {
+  margin: 0 0 12px;
+}
+
+.hero-description p:last-child {
+  margin-bottom: 0;
 }
 
 .content-grid {
